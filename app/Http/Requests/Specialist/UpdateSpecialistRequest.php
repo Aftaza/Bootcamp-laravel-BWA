@@ -5,8 +5,8 @@ namespace App\Http\Requests\Specialist;
 use App\Models\MasterData\Specialist;
 // use Illuminate\Auth\Access\Gate;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 use Symfony\Component\HttpFoundation\Response;
-
 
 class UpdateSpecialistRequest extends FormRequest
 {
@@ -29,7 +29,7 @@ class UpdateSpecialistRequest extends FormRequest
     {
         return [
             'name' => [
-                'required', 'string', 'max: 255',
+                'required', 'string', 'max: 255', Rule::unique('specialist')->ignore($this->specialist),
             ],
             'price' => [
                 'required', 'string', 'max: 255',
