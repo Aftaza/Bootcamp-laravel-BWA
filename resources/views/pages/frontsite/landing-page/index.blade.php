@@ -15,9 +15,9 @@
                 <div class="text-center absolute bottom-0 -left-20 -translate-y-14 bg-white px-7 py-5 rounded-xl shadow-2xl">
                     <h5 class="font-medium text-[#1E2B4F]">Dr. Kartika Me</h5>
                     <p class="text-xs text-[#AFAEC3] mt-1">Nutrionist</h1>
-                        <span
+                        <a href="{{ route('appointment.index') }}"
                             class="block text-xs text-[#1E2B4F] font-medium bg-[#F2F6FE] px-4 py-2 rounded-full text-center mt-7">Book
-                            Now</span>
+                            Now</a>
                 </div>
             </div>
 

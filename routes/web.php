@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backsite\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontsite\LandingController;
 use App\Http\Controllers\Frontsite\AppointmentController;
@@ -26,7 +27,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
 });
 
 Route::group(['prefix' => 'backsite', 'as' => 'backsite.', 'middleware' => ['auth:sanctum', 'verified']], function(){
-    return view('dashboard');
+    Route::resource('dashboard', DashboardController::class);
 });
 
 // Route::get('/', function () {
