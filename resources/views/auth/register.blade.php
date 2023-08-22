@@ -21,37 +21,56 @@
                     <div class="mt-12">
 
                         <!-- Form input -->
-                        <form action="" class="grid gap-6">
+                        <form method="POST" action="{{ route('register') }}" class="grid gap-6">
+                            {{-- token here  --}}
+                            @csrf
+
                             <label class="block">
-                                <input type="text"
+                                <input type="text" id="name" name="name"
                                     class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
-                                    placeholder="Complete Name" />
+                                    placeholder="Complete Name" value="{{ old('name') }}" required autofocus autocomplete="name" />
+
+                                    @if ($errors->has('name'))
+                                        <p class="text-red-500 mb-3 text-sm">{{ $errors->first('email') }}</p>
+                                    @endif
+                            </label>
+
+                            {{-- <label class="block">
+                                <input type="text" name="age" id="age"
+                                    class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
+                                    placeholder="Age"  />
+                            </label> --}}
+
+                            <label class="block">
+                                <input type="email" id="email" name="email"
+                                    class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
+                                    placeholder="Email Address" value="{{ old('email') }}" required />
+                                    @if ($errors->has('email'))
+                                        <p class="text-red-500 mb-3 text-sm">{{ $errors->first('email') }}</p>
+                                    @endif
                             </label>
 
                             <label class="block">
-                                <input type="text"
+                                <input type="password" id="password" name="password"
                                     class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
-                                    placeholder="Age" />
+                                    placeholder="Password" required value="{{ old('password') }}" autocomplete="new-password"/>
+                                    @if ($errors->has('password'))
+                                        <p class="text-red-500 mb-3 text-sm">{{ $errors->first('email') }}</p>
+                                    @endif
                             </label>
 
                             <label class="block">
-                                <input type="email"
+                                <input type="password" id="password_confirmation" name="password_confirmation"
                                     class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
-                                    placeholder="Email Address" />
-                            </label>
-
-                            <label class="block">
-                                <input type="password"
-                                    class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
-                                    placeholder="Password" />
+                                    placeholder="Confirm Password" required autocomplete="new-password" />
                             </label>
 
                             <div class="mt-10 grid gap-6">
-                                <a href="sign-up-success.html"
+                                <button type="submit"
                                     class="text-center text-white text-lg font-medium bg-[#0D63F3] px-10 py-4 rounded-full">
                                     Continue
-                                </a>
-                                <a href="sign-in.html"
+                                </button>
+                                <a href="{{ route('login') }}"
                                     class="text-center text-lg text-[#1E2B4F] font-medium bg-[#F2F6FE] px-10 py-4 rounded-full">
                                     Sign In
                                 </a>
@@ -68,7 +87,7 @@
                 <div class="flex flex-col justify-center h-full px-24 pt-10 pb-20">
                     <div class="relative">
                         <div class="relative top-0 -left-5 mb-7">
-                            <img src="/src/assets/images/blockqoutation.svg" class="h-[30px]" alt="" />
+                            <img src="{{ asset('/assets/frontsite/images/blockqoutation.svg') }}" class="h-[30px]" alt="" />
                         </div>
                         <p class="text-2xl leading-loose">
                             MeetDoctor telah membantu saya terhubung dengan dokter yang

@@ -1,6 +1,9 @@
 <?php
 
+// backsite 
 use App\Http\Controllers\Backsite\DashboardController;
+
+//frontsite
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontsite\LandingController;
 use App\Http\Controllers\Frontsite\AppointmentController;

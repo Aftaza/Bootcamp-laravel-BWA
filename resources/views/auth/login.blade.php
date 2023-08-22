@@ -46,7 +46,7 @@
                                     placeholder="Password" required autocomplete="current-password"/>
                             </label>
                             @if ($errors->has('password'))
-                                <p class="text-red mb-3 text-sm">{{ $errors->first('email') }}</p>
+                                <p class="text-red-500 mb-3 text-sm">{{ $errors->first('email') }}</p>
                             @endif
 
                             <div class="mt-10 grid gap-6">
@@ -71,7 +71,7 @@
                 <div class="flex flex-col justify-center h-full px-24 pt-10 pb-20">
                     <div class="relative">
                         <div class="relative top-0 -left-5 mb-7">
-                            <img src="/src/assets/images/blockqoutation.svg" class="h-[30px]" alt="" />
+                            <img src="{{ asset('/assets/frontsite/images/blockqoutation.svg') }}" class="h-[30px]" alt="" />
                         </div>
                         <p class="text-2xl leading-loose">
                             MeetDoctor telah membantu saya terhubung dengan dokter yang
