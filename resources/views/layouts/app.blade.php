@@ -20,7 +20,7 @@
         {{-- @include('sweetalert::alert') --}}
 
         @include('components.backsite.header')
-        {{-- @include('components.backsite.menu') --}}
+        @include('components.backsite.menu')
             @yield('content')
         @include('components.backsite.footer')
 
