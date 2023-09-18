@@ -24,7 +24,7 @@ class PermissionController extends Controller
      */ 
     public function index()
     {
-        return view('pages.backsite.permission.index');
+        return view('pages.backsite.management-access.permission.index');
     }
 
     /**

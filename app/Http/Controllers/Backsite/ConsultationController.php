@@ -24,7 +24,7 @@ class ConsultationController extends Controller
      */
     public function index()
     {
-        return view('pages.backsite.consultation.index');
+        return view('pages.backsite.master-data.consultation.index');
     }
 
     /**

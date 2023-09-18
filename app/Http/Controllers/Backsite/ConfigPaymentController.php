@@ -24,7 +24,7 @@ class ConfigPaymentController extends Controller
      */
     public function index()
     {
-        return view('pages.backsite.config_payment.index');
+        return view('pages.backsite.master-data.config-payment.index');
     }
 
     /**

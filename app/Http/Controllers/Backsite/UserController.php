@@ -24,7 +24,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('pages.backsite.user.index');
+        return view('pages.backsite.management-access.user.index');
     }
 
     /**
