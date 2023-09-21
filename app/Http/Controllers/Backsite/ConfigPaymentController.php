@@ -3,7 +3,18 @@
 namespace App\Http\Controllers\Backsite;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+
+// Library
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\Response;
+
+// request
+use App\Http\Requests\ConfigPayment\UpdateConfigPaymentRequest;
+
+// model
+use App\Models\MasterData\ConfigPayment;
+
+use Auth;
 
 class ConfigPaymentController extends Controller
 {
@@ -24,7 +35,10 @@ class ConfigPaymentController extends Controller
      */
     public function index()
     {
-        return view('pages.backsite.master-data.config-payment.index');
+        // for table grid
+        $config_payment = ConfigPayment::all();
+
+        return view('pages.backsite.master-data.config-payment.index', compact('config_payment'));
     }
 
     /**
@@ -43,7 +57,7 @@ class ConfigPaymentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($request)
     {
         return abort(404);
     }
@@ -65,9 +79,9 @@ class ConfigPaymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(ConfigPayment $config_payment)
     {
-        return abort(404);
+        return view('pages.backsite.master-data.config-payment.index', compact('config_payment'));
     }
 
     /**
@@ -77,9 +91,16 @@ class ConfigPaymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateConfigPaymentRequest $request, ConfigPayment $config_payment)
     {
-        return abort(404);
+        $data = $request->all();
+
+        $config_payment->update($data);
+
+        // response with alert
+        alert()->success('Success Updated', 'Successfully update Config Payment with id '.$config_payment->id);
+        
+        return redirect()->route('backsite.config_payment.index');
     }
 
     /**

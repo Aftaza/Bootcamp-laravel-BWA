@@ -3,7 +3,18 @@
 namespace App\Http\Controllers\Backsite;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+
+// Library
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\Response;
+
+// model
+use App\Models\ManagementAcces\Permission;
+use App\Models\ManagementAcces\PermissionRole;
+use App\Models\ManagementAcces\Role;
+use App\Models\ManagementAcces\RoleUser;
+
+use Auth;
 
 class PermissionController extends Controller
 {
@@ -24,7 +35,9 @@ class PermissionController extends Controller
      */ 
     public function index()
     {
-        return view('pages.backsite.management-access.permission.index');
+        $permission = Permission::orderBy('created_at', 'desc')->get();
+
+        return view('pages.backsite.management-access.permission.index', compact('permission'));
     }
 
     /**
@@ -43,7 +56,7 @@ class PermissionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($request)
     {
         return abort(404);
     }
@@ -77,7 +90,7 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($request, $id)
     {
         return abort(404);
     }

@@ -3,7 +3,21 @@
 namespace App\Http\Controllers\Backsite;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+
+// Library
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\Response;
+
+// model
+use App\Models\MasterData\ConfigPayment;
+use App\Models\MasterData\Consultation;
+use App\Models\MasterData\Specialist;
+use App\Models\Operational\Appointment;
+use App\Models\Operational\Doctor;
+use App\Models\Operational\Transaction;
+use App\Models\User;
+
+use Auth;
 
 class ReportTransactionController extends Controller
 {

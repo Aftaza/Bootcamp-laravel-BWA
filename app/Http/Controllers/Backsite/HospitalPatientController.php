@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 // Library
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\DB;
 
 // model
 use App\Models\MasterData\ConfigPayment;
@@ -19,7 +20,8 @@ use App\Models\User;
 
 use Auth;
 
-class ReportAppointmentController extends Controller
+
+class HospitalPatientController extends Controller
 {
     /**
      * Create a new controller instance
@@ -38,7 +40,11 @@ class ReportAppointmentController extends Controller
      */
     public function index()
     {
-        return view('pages.backsite.appointment.index');
+        $hospital_patient = User::whereHas('detail_user', function($query){
+                                $query->where('type_user_id', 3);
+                            })->orderBy('created_at', 'desc')->get();
+
+        return view('pages.backsite.operational.hospital-patient.index', compact('hospital_patient'));
     }
 
     /**
