@@ -38,7 +38,7 @@ class ReportTransactionController extends Controller
      */
     public function index()
     {
-        return view('pages.backsite.transaction.index');
+        return view('pages.backsite.operational.transaction.index');
     }
 
     /**

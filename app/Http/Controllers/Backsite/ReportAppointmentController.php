@@ -38,7 +38,7 @@ class ReportAppointmentController extends Controller
      */
     public function index()
     {
-        return view('pages.backsite.appointment.index');
+        return view('pages.backsite.operational.appointment.index');
     }
 
     /**
