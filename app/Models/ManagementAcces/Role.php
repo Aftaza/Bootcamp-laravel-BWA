@@ -28,6 +28,14 @@ class Role extends Model
         'deleted_at',
     ];
 
+    public function user(){
+        return $this->belongsToMany(User::class);
+    }
+
+    public function permission(){
+        return $this->belongsToMany('App\Models\ManagementAcces\Permission');
+    }
+
     public function role_user(){
         // 2 parameter required (path model, field foreign key)
         return $this->hasMany('App\Models\ManagementAcces\RoleUser', 'role_id');
