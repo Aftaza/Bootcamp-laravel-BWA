@@ -11,7 +11,7 @@ class DetailUser extends Model
     // use HasFactory;
     use SoftDeletes;
 
-    //declare table name
+    // declare table name
     public $table = 'detail_user';
 
     // this field must type date yyyy-mm-dd hh:mm:ss
@@ -21,6 +21,7 @@ class DetailUser extends Model
         'deleted_at',
     ];
 
+    // declare fillable fields
     protected $fillable = [
         'user_id',
         'type_user_id',
@@ -33,13 +34,14 @@ class DetailUser extends Model
         'deleted_at',
     ];
 
-    public function type_user(){
-        // 3 parameter required (path model, field foreign key, field primary key from tabel hasMany)
-        return $this->belongsTo('App\Models\MasterData\TypeUser', 'type_user_id', 'id');
+    // one to one
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id', 'id');
     }
 
-    public function user(){
-        // 3 parameter required (path model, field foreign key, field primary key from tabel hasMany)
-        return $this->belongsTo('App\Models\User', 'user_id', 'id');
+    public function type_user()
+    {
+        return $this->belongsTo('App\Models\MasterData\TypeUser', 'type_user_id', 'id');
     }
 }

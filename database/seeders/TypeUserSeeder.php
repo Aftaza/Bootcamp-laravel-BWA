@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\MasterData\TypeUser;
-
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+
+use App\Models\MasterData\TypeUser;
 use Illuminate\Support\Facades\DB;
 
 class TypeUserSeeder extends Seeder
@@ -16,7 +17,7 @@ class TypeUserSeeder extends Seeder
      */
     public function run()
     {
-        // Memasukkan data statis yang akan disiapkan
+        // create data here
         $type_user = [
             [
                 'name' => 'Admin',
@@ -35,7 +36,7 @@ class TypeUserSeeder extends Seeder
             ],
         ];
 
-        // Melakukan insert data pada array ke tabel
+        // this array $type_user will be insert to table 'type_user'
         TypeUser::insert($type_user);
     }
 }
